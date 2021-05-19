@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of tickets</title>
+</head>
+<body class="container">
+    <a href="/"><-Back</a>
+    <form method="POST" action="create/">
+        {% csrf_token %}
+        <p>
+            <label>Enter customer id</label><br>
+            <input type="number" name="customer">
+        </p>
+        <p>
+            <label>Enter plane id</label><br>
+            <input type="number" name="plane">
+        </p>
+        <p>
+            <label>Enter ticket price</label><br>
+            <input type="number" name="price">
+        </p>
+        <input type="submit" value="Add">
+    </form>
+    {% if tickets.count > 0 %}
+    <h2>List of Tickets</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Customer Id</th>
+            <th>Plane Id</th>
+            <th>Price</th>
+        </tr>
+        {% for ticket in tickets %}
+        <tr>
+            <td>{{ ticket.id }}</td>
+            <td>{{ ticket.customer }}</td>
+            <td>{{ ticket.plane }}</td>
+            <td>{{ ticket.price }}</td>
+            <td><a href="edit/{{ ticket.id }}">Change</a> | <a href="delete/{{ ticket.id }}">Delete</a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>

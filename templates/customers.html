@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+</head>
+<body class="container">
+    <a href="/"><-Back</a>
+    <form method="POST" action="create/">
+        {% csrf_token %}
+        <p>
+            <label>Enter name</label><br>
+            <input type="text" name="name">
+        </p>
+        <p>
+            <label>Enter phone</label><br>
+            <input type="text" name="phone">
+        </p>
+        <input type="submit" value="Add">
+    </form>
+    {% if customers.count > 0 %}
+    <h2>List of Customers</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Phone</th>
+        </tr>
+        {% for customer in customers %}
+        <tr>
+            <td>{{ customer.id }}</td>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.phone }}</td>
+            <td><a href="edit/{{ customer.id }}">Change</a> | <a href="delete/{{ customer.id }}">Delete</a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>

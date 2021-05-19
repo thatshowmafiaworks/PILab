@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Ticket</title>
+</head>
+<body class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Enter Customer id</label><br>
+            <input type="number" name="customer" value="{{ ticket.customer }}"/>
+        </p>
+        <p>
+            <label>Enter Plane id</label><br>
+            <input type="number" name="plane" value="{{ ticket.plane }}"/>
+        </p>
+        <p>
+            <label>Enter Price id</label><br>
+            <input type="number" name="price" value="{{ ticket.price }}"/>
+        </p>
+        <input type="submit" value="Save"/>
+    </form>
+</body>
+</html>

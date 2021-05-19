@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Planes table</title>
+</head>
+<body class="container">
+<a href="/"><-Back</a>
+    <form method="POST" action="create/">
+        {% csrf_token %}
+        <p>
+            <label>Enter departure city</label><br>
+            <input type="text" name="city_from">
+        </p>
+        <p>
+            <label>Enter destination city</label><br>
+            <input type="text" name="city_to">
+        </p>
+        <p>
+            <label>Enter departure date</label><br>
+            <input type="date" name="departure_date">
+        </p>
+        <p>
+            <label>Enter departure time</label><br>
+            <input type="time" name="departure_time">
+        </p>
+        <p>
+            <label>Enter landing date</label><br>
+            <input type="date" name="landing_date">
+        </p>
+        <p>
+            <label>Enter landing time</label><br>
+            <input type="time" name="landing_time">
+        </p>
+        <input type="submit" value="Add">
+    </form>
+    {% if planes.count > 0 %}
+    <h2>List of Planes</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>City_from</th>
+            <th>City_to</th>
+            <th>Departure_date</th>
+            <th>Departure_time</th>
+            <th>Landing_date</th>
+            <th>Landing_time</th>
+        </tr>
+        {% for plane in planes %}
+        <tr>
+            <td>{{ plane.id }}</td>
+            <td>{{ plane.city_from }}</td>
+            <td>{{ plane.city_to }}</td>
+            <td>{{ plane.departure_date }}</td>
+            <td>{{ plane.departure_time }}</td>
+            <td>{{ plane.landing_date }}</td>
+            <td>{{ plane.landing_time }}</td>
+            <td><a href="edit/{{ plane.id }}">Change</a> | <a href="delete/{{ plane.id }}">Delete</a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Plane</title>
+</head>
+<body class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Enter city_from</label><br>
+            <input type="text" name="city_from" value="{{ plane.city_from }}"/>
+        </p>
+        <p>
+            <label>Enter city_to</label><br>
+            <input type="text" name="city_to" value="{{ plane.city_to }}"/>
+        </p>
+        <p>
+            <label>Enter departure_date</label><br>
+            <input type="date" name="departure_date"/>   <label>{{ plane.departure_date }}</label>
+        </p>
+        <p>
+            <label>Enter departure_time</label><br>
+            <input type="time" name="departure_time"/>   <label>{{ plane.departure_time }}</label>
+        </p>
+        <p>
+            <label>Enter landing_date</label><br>
+            <input type="date" name="landing_date"?/>   <label>{{ plane.landing_date }}</label>
+        </p>
+        <p>
+            <label>Enter landing_time</label><br>
+            <input type="time" name="landing_time"/>    <label>{{ plane.landing_time }}</label>
+        </p>
+        <input type="submit" value="Save"/>
+    </form>
+</body>
+</html>
